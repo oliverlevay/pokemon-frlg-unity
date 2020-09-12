@@ -24,7 +24,7 @@ public class AnimationHandler
             if (!moving) lastTurnTime = Time.time;
         }
 
-        Animator.SetBool("isMoving", moving);
+        Animator.SetBool("isMoving", true);
         Animator.SetFloat("moveX", direction.ToVector3().x);
         Animator.SetFloat("moveY", direction.ToVector3().y);
     }
