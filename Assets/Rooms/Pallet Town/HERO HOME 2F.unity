@@ -1670,8 +1670,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71c079d02059ce14bbcdfeadba0ded03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
-  movementTrigger: 0.5
+  MovementSpeed: 5
+  MovementTrigger: 0.4
+  TurnDelay: 300
 --- !u!95 &2040019239
 Animator:
   serializedVersion: 3
