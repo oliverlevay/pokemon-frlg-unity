@@ -12,6 +12,8 @@ public class RenderRelativeToPlayer : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        if (!player)
+            player = FindObjectOfType<Player>();
     }
 
     // Update is called once per frame
@@ -22,16 +24,16 @@ public class RenderRelativeToPlayer : MonoBehaviour
         switch (direction)
         {
             case Direction.Down:
-                spriteRenderer.enabled = playerPos.y > thisPos.y;
+                spriteRenderer.enabled = playerPos.y >= thisPos.y;
                 break;
             case Direction.Up:
-                spriteRenderer.enabled = playerPos.y < thisPos.y;
+                spriteRenderer.enabled = playerPos.y <= thisPos.y;
                 break;
             case Direction.Left:
-                spriteRenderer.enabled = playerPos.x < thisPos.x;
+                spriteRenderer.enabled = playerPos.x <= thisPos.x;
                 break;
             case Direction.Right:
-                spriteRenderer.enabled = playerPos.x > thisPos.x;
+                spriteRenderer.enabled = playerPos.x >= thisPos.x;
                 break;
             default:
                 break;

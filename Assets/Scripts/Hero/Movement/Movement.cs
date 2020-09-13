@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
 
     void Start()
     {
-        animationHandler = new AnimationHandler(GetComponent<Animator>(), TurnDelay);
+        animationHandler = new AnimationHandler(GetComponentInChildren<Animator>(), TurnDelay);
     }
 
     void Update()
