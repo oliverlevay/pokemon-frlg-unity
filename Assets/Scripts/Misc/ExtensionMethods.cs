@@ -24,26 +24,4 @@ public static partial class ExtensionMethods
                 throw new System.Exception("Unknown direction");
         }
     }
-    public static string GetCollisionString(this Direction direction)
-    {
-        switch (direction)
-        {
-            case Direction.None:
-                return "DirectionalNone";
-            case Direction.Right:
-                return "HorizontalCollision";
-            case Direction.Left:
-                return "HorizontalCollision";
-            case Direction.Up:
-                return "VerticalCollision";
-            case Direction.Down:
-                return "VerticalCollision";
-            default:
-                throw new System.Exception("Unknown direction");
-        }
-    }
-    public static bool IsCollisionString(this string collisionString)
-    {
-        return collisionString == "HorizontalCollision" || collisionString == "VerticalCollision";
-    }
 }

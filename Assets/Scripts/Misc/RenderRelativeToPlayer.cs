@@ -16,7 +16,7 @@ public class RenderRelativeToPlayer : MonoBehaviour
             player = FindObjectOfType<Player>();
     }
 
-    // Update is called once per frame
+    // @TODO Could be performance intensive.
     void FixedUpdate()
     {
         Vector3 playerPos = player.gameObject.transform.position;

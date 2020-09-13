@@ -7,12 +7,16 @@ public class Movement : MonoBehaviour
     public float MovementTrigger = 0.2f;
     public int TurnDelay = 100;
     public float RaycastDistance = 1f;
+    public Vector3 TargetPosition;
+    public LayerMask LayerMask;
     private bool isMoving;
     private AnimationHandler animationHandler;
+    private BoxCollider2D boxCollider;
 
     void Start()
     {
         animationHandler = new AnimationHandler(GetComponentInChildren<Animator>(), TurnDelay);
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     void Update()
@@ -22,12 +26,13 @@ public class Movement : MonoBehaviour
             InputState input = InputState.FromInput(MovementTrigger);
             if (input.Direction != Direction.None)
             {
-                Collider2D collider = Physics2D.Raycast(transform.position, input.Direction.Vector2(), RaycastDistance).collider;
-                bool canPass = collider == null || (collider.tag.IsCollisionString() && collider.tag != input.Direction.GetCollisionString());
+                Collider2D collider = Physics2D.Raycast(transform.position, input.Direction.Vector2(), RaycastDistance, LayerMask).collider;
+                bool canPass = collider == null;
 
                 if (animationHandler.ReadyToMove && input.Powered && canPass)
                 {
-                    StartCoroutine(Move(transform.position + input.Direction.Vector2().Vector3()));
+                    TargetPosition = transform.position + input.Direction.Vector2().Vector3();
+                    StartCoroutine(Move());
                 }
 
                 animationHandler.SetState(input.Direction, isMoving);
@@ -39,16 +44,16 @@ public class Movement : MonoBehaviour
         }
     }
 
-    IEnumerator Move(Vector3 targetPos)
+    IEnumerator Move()
     {
         animationHandler.SetMoving(true);
         isMoving = true;
-        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
+        while ((TargetPosition - transform.position).sqrMagnitude > Mathf.Epsilon)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, MovementSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, TargetPosition, MovementSpeed * Time.deltaTime);
             yield return null;
         }
-        transform.position = targetPos;
+        transform.position = TargetPosition;
         isMoving = false;
     }
 }

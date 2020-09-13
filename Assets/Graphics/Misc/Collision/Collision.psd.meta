@@ -5,6 +5,21 @@ TextureImporter:
   - first:
       213: 3759228360811183398
     second: Collision_0
+  - first:
+      213: -6425663539476878187
+    second: Collision_0
+  - first:
+      213: -2623895963117646339
+    second: Collision_1
+  - first:
+      213: -851789593734295445
+    second: Collision_2
+  - first:
+      213: 4550207301783981519
+    second: Collision_3
+  - first:
+      213: -1036624066249129379
+    second: Collision_4
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -96,6 +111,69 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59c2d433e0573d6a0800000000000000
+      internalID: -6425663539476878187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfd8ac6068c069bd0800000000000000
+      internalID: -2623895963117646339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_2
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b60d712a0e5dd24f0800000000000000
+      internalID: -851789593734295445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_3
+      rect:
+        serializedVersion: 2
+        x: 0
         y: 0
         width: 16
         height: 16
@@ -106,8 +184,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 62d79b3e6467b2430800000000000000
-      internalID: 3759228360811183398
+      spriteID: fcd0935de65952f30800000000000000
+      internalID: 4550207301783981519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Collision_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d52899d67eb2d91f0800000000000000
+      internalID: -1036624066249129379
       vertices: []
       indices: 
       edges: []
