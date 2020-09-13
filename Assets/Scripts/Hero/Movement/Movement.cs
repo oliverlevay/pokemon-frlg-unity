@@ -4,9 +4,9 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float MovementSpeed = 5;
-    public float MovementTrigger = 0.5f;
-    public int TurnDelay = 300;
-
+    public float MovementTrigger = 0.2f;
+    public int TurnDelay = 100;
+    public float RaycastDistance = 1f;
     private bool isMoving;
     private AnimationHandler animationHandler;
 
@@ -20,12 +20,14 @@ public class Movement : MonoBehaviour
         if (!isMoving)
         {
             InputState input = InputState.FromInput(MovementTrigger);
-
             if (input.Direction != Direction.None)
             {
-                if (animationHandler.ReadyToMove && input.Powered)
+                Collider2D collider = Physics2D.Raycast(transform.position, input.Direction.Vector2(), RaycastDistance).collider;
+                bool canPass = collider == null || (collider.tag.IsCollisionString() && collider.tag != input.Direction.GetCollisionString());
+
+                if (animationHandler.ReadyToMove && input.Powered && canPass)
                 {
-                    StartCoroutine(Move(transform.position + input.Direction.ToVector3()));
+                    StartCoroutine(Move(transform.position + input.Direction.Vector2().Vector3()));
                 }
 
                 animationHandler.SetState(input.Direction, isMoving);
