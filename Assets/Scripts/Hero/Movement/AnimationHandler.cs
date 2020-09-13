@@ -1,36 +1,42 @@
 ﻿using UnityEngine;
+using AnimationState = Scripts.Enums.AnimationState;
 
-public class AnimationHandler
+public class AnimationHandler : MonoBehaviour
 {
-    public Animator Animator { get; private set; }
-    public Direction CharacterDirection { get; private set; }
-    public bool ReadyToMove { get { return (Time.time) - lastTurnTime > turnDelay; } }
-
+    public bool ReadyToMove { get { return (Time.time) - lastTurnTime > movement.TurnDelay / 1000; } }
+    private Direction characterDirection;
+    private Animator animator;
     private float lastTurnTime;
     private float turnDelay;
+    private Movement movement;
 
-    public AnimationHandler(Animator animator, int turnDelay)
+    private void Start()
     {
-        Animator = animator;
+        animator = GetComponentInChildren<Animator>();
+        movement = GetComponent<Movement>();
         lastTurnTime = Time.time;
-        this.turnDelay = (float)turnDelay / 1000;
     }
-
-    public void SetState(Direction direction, bool moving)
+    public void SetDirectionalMovement(Direction direction, bool moving)
     {
-        if (CharacterDirection != direction)
+        if (characterDirection != direction)
         {
-            CharacterDirection = direction;
+            characterDirection = direction;
             if (!moving) lastTurnTime = Time.time;
         }
-
         this.SetMoving(true);
-        Animator.SetFloat("moveX", direction.Vector2().x);
-        Animator.SetFloat("moveY", direction.Vector2().y);
+        animator.SetFloat("moveX", direction.Vector2().x);
+        animator.SetFloat("moveY", direction.Vector2().y);
     }
-
     public void SetMoving(bool moving)
     {
-        Animator.SetBool("isMoving", moving);
+        animator.SetBool("isMoving", moving);
+    }
+    public void PlayAnimation(AnimationState animation)
+    {
+        animator.Play(animation.ToString());
+    }
+    public float GetAnimationTime()
+    {
+        return animator.GetCurrentAnimatorStateInfo(0).length;
     }
 }

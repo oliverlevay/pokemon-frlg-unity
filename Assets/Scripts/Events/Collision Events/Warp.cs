@@ -1,23 +1,21 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
+using AnimationState = Scripts.Enums.AnimationState;
 
-public class Warp : CollisionEvent
+namespace Scripts.Events.CollisionEvents
 {
-    public Warp warpTarget;
-    public Vector3 offset;
-    public override void ExecuteEvent(Player player)
+    public class Warp : CollisionEvent
     {
-        player.transform.position = warpTarget.transform.position;
-        player.Movement.TargetPosition = warpTarget.transform.position + offset;
-        BoxCollider2D playerCollision = player.gameObject.GetComponent<BoxCollider2D>();
-        playerCollision.enabled = false;
-        StartCoroutine(ReEnablePlayerCollision(playerCollision));
-
-    }
-    IEnumerator ReEnablePlayerCollision(BoxCollider2D playerCollision)
-    {
-        yield return new WaitForSeconds(1);
-        playerCollision.enabled = true;
+        [SerializeField]
+        private Warp warpTarget;
+        [SerializeField]
+        private Vector3 offset;
+        [SerializeField]
+        private AnimationState playerAnimation;
+        public override void ExecuteEvent(Player player)
+        {
+            StartCoroutine(player.Warp(warpTarget, offset, playerAnimation));
+        }
     }
 }
+
