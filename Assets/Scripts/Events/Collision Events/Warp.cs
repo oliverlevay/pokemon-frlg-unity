@@ -2,20 +2,14 @@
 using UnityEngine;
 using AnimationState = Scripts.Enums.AnimationState;
 
-namespace Scripts.Events.CollisionEvents
-{
-    public class Warp : CollisionEvent
-    {
-        [SerializeField]
-        private Warp warpTarget;
-        [SerializeField]
-        private Vector3 offset;
-        [SerializeField]
-        private AnimationState playerAnimation;
-        public override void ExecuteEvent(Player player)
-        {
-            StartCoroutine(player.Warp(warpTarget, offset, playerAnimation));
-        }
+public class Warp : CollisionEvent {
+    [SerializeField]
+    private Warp warpTarget;
+    [SerializeField]
+    private Vector3 offset;
+    [SerializeField]
+    private AnimationState playerAnimation;
+    public override void ExecuteEvent (Player player) {
+        StartCoroutine (player.Warp (warpTarget, offset, playerAnimation));
     }
 }
-

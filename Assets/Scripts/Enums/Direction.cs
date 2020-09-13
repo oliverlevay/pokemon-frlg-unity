@@ -1,4 +1,7 @@
-﻿public enum Direction
-{
-    None, Up, Down, Left, Right
+﻿public enum Direction {
+    None,
+    Up,
+    Down,
+    Left,
+    Right
 }
