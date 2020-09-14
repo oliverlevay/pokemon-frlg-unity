@@ -4,13 +4,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour {
     public Interaction[] Interactions;
-    // Start is called before the first frame update
-    void Start () {
-
-    }
-
-    // Update is called once per frame
-    void Update () {
-
+    public void Interact () {
+        Interactions[0].Interact ();
     }
 }

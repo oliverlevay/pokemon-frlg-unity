@@ -20,6 +20,7 @@ public class Movement : MonoBehaviour {
     private AnimationHandler animationHandler;
     private BoxCollider2D boxCollider;
     private Player player;
+    private Vector2 facingDirection = new Vector2 (0, 1);
 
     void Start () {
         animationHandler = GetComponent<AnimationHandler> ();
@@ -28,25 +29,39 @@ public class Movement : MonoBehaviour {
     }
 
     void Update () {
+        bool aButtonClicked = Input.GetButtonDown ("A");
         if (!isMoving) {
             InputState input = InputState.FromInput (movementTrigger);
-            if (input.Direction != Direction.None) {
-                Collider2D collider = Physics2D.Raycast (transform.position, input.Direction.Vector2 (), rayCastDistance, LayerMask).collider;
-                bool canPass = collider == null;
-                if (collider) {
-                    CollisionEvent collisionEvent = collider.gameObject.GetComponent<CollisionEvent> ();
+            Collider2D rayCastCollider = null;
+            bool playerTriesToMove = input.Direction != Direction.None;
+
+            if (playerTriesToMove || aButtonClicked) {
+                if (playerTriesToMove)
+                    facingDirection = input.Direction.Vector2 ();
+                rayCastCollider = Physics2D.Raycast (transform.position, facingDirection, rayCastDistance, LayerMask).collider;
+            }
+
+            if (playerTriesToMove) {
+                bool canPass = rayCastCollider == null;
+                if (rayCastCollider) {
+                    CollisionEvent collisionEvent = rayCastCollider.gameObject.GetComponent<CollisionEvent> ();
                     if (collisionEvent) {
                         collisionEvent.ExecuteEvent (player);
                     }
                 }
                 if (animationHandler.ReadyToMove && input.Powered && canPass) {
-                    TargetPosition = transform.position + input.Direction.Vector2 ().Vector3 ();
+                    TargetPosition = transform.position + facingDirection.Vector3 ();
                     StartCoroutine (Move ());
                 }
                 animationHandler.SetDirectionalMovement (input.Direction, isMoving);
             } else {
                 animationHandler.SetMoving (false);
-
+                if (aButtonClicked && rayCastCollider) {
+                    Interactable interactable = rayCastCollider.GetComponent<Interactable> ();
+                    if (interactable) {
+                        interactable.Interact ();
+                    }
+                }
             }
         }
     }
