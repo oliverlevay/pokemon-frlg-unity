@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa668c6b3bec0fd4e98fedd1d68d7860, type: 3}
   m_Name: Sink
   m_EditorClassIdentifier: 
-  regularDialogue:
-  - 'It smells delicious!
+  regularDialogue: 'It smells delicious!
 
     Somebody''s been cooking here.'
-  trainerHasPokemonDialogue: []
+  regularMaleDialogue: 
+  regularFemaleDialogue: 
+  trainerHasPokemonDialogue: 
   gender: 0

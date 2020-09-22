@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa668c6b3bec0fd4e98fedd1d68d7860, type: 3}
   m_Name: NES
   m_EditorClassIdentifier: 
-  regularDialogue:
-  - '{PLAYER} played with the NES.'
-  - '...Okay!
+  regularDialogue: '[PLAYER] played with the NES.
 
-    It''s time to go!'
-  trainerHasPokemonDialogue: []
+    
+
+    [...]Okay!
+
+    It''s
+    time to go!'
+  regularMaleDialogue: 
+  regularFemaleDialogue: 
+  trainerHasPokemonDialogue: 
   gender: 0

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa668c6b3bec0fd4e98fedd1d68d7860, type: 3}
   m_Name: Cupboard
   m_EditorClassIdentifier: 
-  regularDialogue:
-  - 'Dishes and plates are neatly
+  regularDialogue: 'Dishes and plates are neatly
 
     lined up.'
-  trainerHasPokemonDialogue: []
+  regularMaleDialogue: 
+  regularFemaleDialogue: 
+  trainerHasPokemonDialogue: 
   gender: 0

@@ -12,11 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa668c6b3bec0fd4e98fedd1d68d7860, type: 3}
   m_Name: TV
   m_EditorClassIdentifier: 
-  regularDialogue:
-  - 'There''s a movie on TV.
+  regularDialogue: 
+  regularMaleDialogue: 'There''s a movie on TV.
 
-    Four boys are walking on railroad'
-  - tracks.
-  - ...I better go, too.
-  trainerHasPokemonDialogue: []
+    Four boys are walking on railroad
+
+    tracks.
+
+    
+
+    [...]I
+    better go, too.'
+  regularFemaleDialogue: 'There''s a movie on TV.
+
+    A girl with her hair in pigtails
+    is
+
+    walking up a brick road.
+
+    
+
+    [...]I better go, too.'
+  trainerHasPokemonDialogue: 
   gender: 0

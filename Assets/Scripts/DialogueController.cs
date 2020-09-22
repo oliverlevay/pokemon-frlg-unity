@@ -1,4 +1,6 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 
@@ -22,11 +24,20 @@ public class DialogueController : MonoBehaviour {
         gameState = FindObjectOfType<GameState> ();
         spriteRenderer = GetComponent<SpriteRenderer> ();
         textBoxes = new TextMeshProUGUI[] { textShadow, textHighlight };
+        ClearTextBox ();
     }
     public void TypeText (Dialogue dialogue) {
         SetTextColor (dialogue);
-        if (!writingNewDialogue)
+        if (!writingNewDialogue) {
+            if (dialogue.regularMaleDialogue != "" && !gameState.PlayerIsFemale) {
+                StartCoroutine (WriteTextToBox (dialogue.regularMaleDialogue));
+                return;
+            } else if (dialogue.regularFemaleDialogue != "" && gameState.PlayerIsFemale) {
+                StartCoroutine (WriteTextToBox (dialogue.regularFemaleDialogue));
+                return;
+            }
             StartCoroutine (WriteTextToBox (dialogue.regularDialogue));
+        }
     }
     private void SetTextColor (Dialogue dialogue) {
         switch (dialogue.gender) {
@@ -52,21 +63,28 @@ public class DialogueController : MonoBehaviour {
         }
     }
     private string FormatDialogue (string dialoguePart) {
-        string formattedDialogue = dialoguePart.Replace ("{PLAYER}", gameState.PlayerName);
+        string formattedDialogue = dialoguePart.Replace ("[PLAYER]", gameState.PlayerName).Replace ("[", "").Replace ("]", "");
         return formattedDialogue;
     }
-    IEnumerator WriteTextToBox (string[] dialogue) {
+    IEnumerator WriteTextToBox (string dialogue) {
         writingNewDialogue = true;
         spriteRenderer.enabled = true;
         gameState.Player.DisableMovement ();
-        foreach (string dialoguePart in dialogue) {
-            string formattedDialogue = FormatDialogue (dialoguePart);
+        string[] splitDialogue = dialogue.Split (
+            new [] { "\r\n", "\r", "\n" },
+            StringSplitOptions.None
+        );
+        foreach (string row in splitDialogue) {
+            float startTime = Time.time;
+            Debug.Log (row);
+            string formattedDialogue = FormatDialogue (row);
             foreach (char letter in formattedDialogue.ToCharArray ()) {
                 AppendLetterToTextBox (letter);
                 yield return new WaitForSeconds (letterPause / 100);
             }
             // Wait for keypress to continue dialogue.
-            while (!Input.GetButtonDown ("A")) {
+            Debug.Log ("Waiting for keypress");
+            while (!Input.GetButtonDown ("A") || !(Time.time > (startTime + 0.5f))) {
                 yield return null;
             }
             ClearTextBox ();

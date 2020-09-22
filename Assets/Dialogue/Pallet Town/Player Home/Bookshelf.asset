@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa668c6b3bec0fd4e98fedd1d68d7860, type: 3}
   m_Name: Bookshelf
   m_EditorClassIdentifier: 
-  regularDialogue:
-  - "It's crammed full of POK\xE9MON\nbooks."
-  trainerHasPokemonDialogue: []
+  regularDialogue: "It's crammed full of POK\xE9MON\r\nbooks."
+  regularMaleDialogue: 
+  regularFemaleDialogue: 
+  trainerHasPokemonDialogue: 
   gender: 0

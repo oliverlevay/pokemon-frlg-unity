@@ -12,15 +12,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa668c6b3bec0fd4e98fedd1d68d7860, type: 3}
   m_Name: Mother
   m_EditorClassIdentifier: 
-  regularDialogue:
-  - 'MOM: ...Right.
+  regularDialogue: 
+  regularMaleDialogue: 'MOM: [...]Right.
 
     All boys leave home someday.
 
-'
-  - It said so on TV.
-  - 'Oh, yes. PROF. OAK, next door, was
+    It
+    said so on TV.
 
-    looking for you.'
-  trainerHasPokemonDialogue: []
+    
+
+    Oh, yes. PROF. OAK, next door, was
+
+    looking
+    for you.'
+  regularFemaleDialogue: 'MOM: [...]Right.
+
+    All girls dream of traveling.
+
+    It
+    said so on TV.
+
+    
+
+    Oh, yes. PROF. OAK, next door, was
+
+    looking
+    for you.'
+  trainerHasPokemonDialogue: 
   gender: 1

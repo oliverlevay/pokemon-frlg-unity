@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa668c6b3bec0fd4e98fedd1d68d7860, type: 3}
   m_Name: Dresser
   m_EditorClassIdentifier: 
-  regularDialogue:
-  - 'It''s a nicely made dresser.
+  regularDialogue: 'It''s a nicely made dresser.
 
     It will hold a lot of stuff.'
-  trainerHasPokemonDialogue: []
+  regularMaleDialogue: 
+  regularFemaleDialogue: 
+  trainerHasPokemonDialogue: 
   gender: 0
