@@ -1,0 +1,4 @@
+# pokemon-frlg-unity
+This is an open-source clone of Pokémon Fire Red and Leaf Green. All assets are owned by The Pokémon Company.
+
+I loved the idea of making this instead of working when I come home because I love programming so much (web developer). I wanted to make something that I couldn't do at work, but I'm putting this project on hold. The plan was to make a 1:1 Fire Red clone in Unity, if the project would have been successful it would be super easy and fun to make your own "ROM hacks" in Unity. Lots of people know Unity as well. Anyway, I wanted the ability to import your save files to this game, and thus I wanted to make a "Pokemon .sav file to JSON" converted but didn't actually get started on making it. Maybe I'll come back to this project in the future but for now it's on the shelf.
